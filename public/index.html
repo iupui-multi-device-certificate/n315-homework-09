@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Jungle Cook</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <a href="index.html" class="nav-logo"
+          ><img src="./images/logo.png" alt=""
+        /></a>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link current-page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="browse.html" class="nav-link">Browse</a>
+          </li>
+          <li class="nav-item">
+            <a href="create-recipe.html" class="nav-link">Create Recipe</a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="login.html"
+              class="nav-link btn btn--medium btn--naplesYellow"
+              >Login</a
+            >
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+
+    <main id="app">
+      <section class="content hero">
+        <div class="hero-cta">
+          <div class="large-circle">
+            <h1 class="hero-title">The Jungle Cook</h1>
+            <p class="hero-subtitle">
+              The home to various recipes of your choice. Add your own recipe
+              today and fill the world with joy!
+            </p>
+          </div>
+          <div class="small-circle">
+            <p class="hero-callout">
+              Want to be a Jungle Cook? Go ahead and the kitchen is yours!
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <!-- <div class="footer-content"> -->
+      <div class="copyright">Copyright &copy; 2019 The Jungle Cook</div>
+      <ul class="footer-nav">
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Recipes by Category</a></li>
+        <li><a href="#">Privacy and Copyright</a></li>
+        <li><a href="#">Create Recipe</a></li>
+        <li><a href="#">Your Recipes</a></li>
+      </ul>
+
+      <!-- ignore web accessibility warning since have alt on image tag -->
+      <div class="social">
+        <a href="#">
+          <img src="./images/social/facebook.png" alt="facebook" />
+        </a>
+        <a href="#">
+          <img src="./images/social/instagram.png" alt="instagram"
+        /></a>
+      </div>
+      <!-- </div> -->
+    </footer>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.18.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.18.0/firebase-auth-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/9.18.0/firebase-database-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.18.0/firebase-firestore-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.18.0/firebase-functions-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.18.0/firebase-messaging-compat.js"
+    ></script>
+    <script defer src="/__/firebase/9.18.0/firebase-storage-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/9.18.0/firebase-analytics-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.18.0/firebase-remote-config-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.18.0/firebase-performance-compat.js"
+    ></script>
+    <!-- 
+          initialize the SDK after all desired features are loaded, set useEmulator to false
+          to avoid connecting the SDK to running emulators.
+        -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <!-- our scripts -->
+
+    <script src="lib/jquery-3.6.3.min.js"></script>
+    <script src="app/app.js" type="module"></script>
+  </body>
+</html>

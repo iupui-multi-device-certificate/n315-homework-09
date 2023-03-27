@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Jungle Cook</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body class="bg-naplesYellow">
+    <header class="header">
+      <nav class="navbar">
+        <a href="index.html" class="nav-logo"
+          ><img src="./images/logo.png" alt=""
+        /></a>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="browse.html" class="nav-link">Browse</a>
+          </li>
+          <li class="nav-item">
+            <a href="create-recipe.html" class="nav-link">Create Recipe</a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="login.html"
+              class="nav-link btn btn--medium btn--naplesYellow"
+              >Login</a
+            >
+          </li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+
+    <main id="app">
+      <section class="content section-login">
+        <form class="login-form" onsubmit="event.preventDefault();">
+          <div class="form-title">Login:</div>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email Address"
+            aria-label="email"
+            class="form-element form-element--small"
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            aria-label="password"
+            class="form-element form-element--small"
+          />
+          <input
+            type="submit"
+            value="Login"
+            class="btn btn--wide btn--naplesYellow"
+            name="login"
+            id="login"
+          />
+        </form>
+        <form class="signup-form" onsubmit="event.preventDefault();">
+          <div class="form-subtitle">don't have an account?</div>
+          <div class="form-title">Sign up:</div>
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            placeholder="First Name"
+            aria-label="firstName"
+            class="form-element form-element--small"
+          />
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            placeholder="Last Name"
+            aria-label="lastName"
+            class="form-element form-element--small"
+          />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email Address"
+            aria-label="email"
+            class="form-element form-element--small"
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            aria-label="password"
+            class="form-element form-element--small"
+          />
+          <input
+            type="submit"
+            value="Sign Up"
+            class="btn btn--wide btn--naplesYellow"
+            name="signup"
+            id="signup"
+          />
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <!-- <div class="footer-content"> -->
+      <div class="copyright">Copyright &copy; 2019 The Jungle Cook</div>
+      <ul class="footer-nav">
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Recipes by Category</a></li>
+        <li><a href="#">Privacy and Copyright</a></li>
+        <li><a href="#">Create Recipe</a></li>
+        <li><a href="#">Your Recipes</a></li>
+      </ul>
+
+      <!-- ignore web accessibility warning since have alt on image tag -->
+      <div class="social">
+        <a href="#">
+          <img src="./images/social/facebook.png" alt="facebook" />
+        </a>
+        <a href="#">
+          <img src="./images/social/instagram.png" alt="instagram"
+        /></a>
+      </div>
+      <!-- </div> -->
+    </footer>
+
+    <script src="lib/jquery-3.6.3.min.js"></script>
+    <script src="app/app.js" type="module"></script>
+  </body>
+</html>
