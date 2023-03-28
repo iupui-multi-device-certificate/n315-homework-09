@@ -45,11 +45,14 @@ function initListeners() {
     toggleMobileMenu();
   });
 
-  // $("#loginBtn").click(function (e) {
-  //   console.log(e.currentTarget);
-  //   // signIn();
-  // });
+  //this works
+  //https://stackoverflow.com/questions/35406896/onclick-function-used-on-dynamic-content-not-working-properly
+  //see rrk response
+  $(document).on("click", "#loginBtn", function () {
+    signIn();
+  });
 
+  //this works because it's on every page and not dynamically loaded
   $("#signOutBtn").click(function (e) {
     signOut();
   });
@@ -64,7 +67,7 @@ function initFirebase() {
       // https://firebase.google.com/docs/reference/js/firebase.User
       var uid = user.uid;
       console.log("auth change logged in");
-      document.getElementById("userName").innerHTML = "Michael";
+      // document.getElementById("userName").innerHTML = "Michael";
       userExists = true;
     } else {
       console.log("auth change logged out");
@@ -102,6 +105,9 @@ function signOut() {
       console.log("error signing out");
     });
 }
+
+//add to window namespace per https://stackoverflow.com/questions/57942951/function-not-defined-javascript-onclick b/c using module
+window.signIn = signIn;
 
 $(document).ready(function () {
   try {
