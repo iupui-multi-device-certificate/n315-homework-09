@@ -19,15 +19,41 @@
           <li class="nav-item">
             <a href="browse.html" class="nav-link">Browse</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="createRecipe">
             <a href="create-recipe.html" class="nav-link">Create Recipe</a>
           </li>
+          <!-- for testing, show user's name here -->
+          <li class="nav-item" id="userName"></li>
+
           <li class="nav-item">
-            <a
+            <!-- <a
               href="login.html"
               class="nav-link btn btn--medium btn--naplesYellow"
               >Login</a
+            > -->
+            <!-- test sign in here, move to the login button on the form -->
+            <button
+              id="signInBtn"
+              class="nav-link btn btn--medium btn--naplesYellow"
             >
+              Login
+            </button>
+          </li>
+          <li class="nav-item">
+            <!-- SEMANTIC: use button since needs to perform action on same page before proceeding to new page -->
+            <!-- logout and then redirect to index.html -->
+            <!-- 
+              onclick="signOut" results in uncaught reference error
+              fix: use event listener instead
+              see Steve Doson reply in https://stackoverflow.com/questions/17378199/uncaught-referenceerror-function-is-not-defined-with-onclick
+              ...yet React uses the onclick attribute?
+            -->
+            <button
+              id="signOutBtn"
+              class="nav-link btn btn--medium btn--naplesYellow"
+            >
+              Logout
+            </button>
           </li>
         </ul>
         <div class="hamburger">
@@ -121,7 +147,12 @@
 
     <!-- our scripts -->
 
-    <script src="lib/jquery-3.6.3.min.js"></script>
-    <script src="app/app.js" type="module"></script>
+    <!-- 
+      defer our scripts too since firebase is deferred.
+      fixes issues with firebase or signOut() reference errors.
+    
+    -->
+    <script defer src="lib/jquery-3.6.3.min.js" type="module"></script>
+    <script defer src="app/app.js" type="module"></script>
   </body>
 </html>
