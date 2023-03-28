@@ -1,6 +1,31 @@
+import { homeView } from "./views/homeView.js";
+import { loginView } from "./views/loginView.js";
+
 //globals
 
 let userExists = false;
+const titleBase = "The Jungle Cook";
+
+//refactor to own file
+//router is a type of controller
+
+const routes = {
+  home: homeView(),
+  login: loginView(),
+};
+
+const changeRoute = () => {
+  let hashTag = window.location.hash;
+  let pageID = hashTag.replace("#", "");
+
+  //set to home if empty string
+  if (pageID == "") {
+    pageID = "home";
+  }
+  document.getElementById("app").innerHTML = routes[pageID];
+
+  document.title = `${titleBase} | ${pageID.toUpperCase()}`;
+};
 
 const toggleMobileMenu = () => {
   $(".hamburger").toggleClass("active");
@@ -8,6 +33,9 @@ const toggleMobileMenu = () => {
 };
 
 function initListeners() {
+  $(window).on("hashchange", changeRoute);
+  changeRoute();
+
   $(".hamburger").click(function (e) {
     toggleMobileMenu();
   });
@@ -17,9 +45,10 @@ function initListeners() {
     toggleMobileMenu();
   });
 
-  $("#signInBtn").click(function (e) {
-    signIn();
-  });
+  // $("#loginBtn").click(function (e) {
+  //   console.log(e.currentTarget);
+  //   // signIn();
+  // });
 
   $("#signOutBtn").click(function (e) {
     signOut();
@@ -39,10 +68,7 @@ function initFirebase() {
       userExists = true;
     } else {
       console.log("auth change logged out");
-      document.getElementById("userName").innerHTML = "";
-      // for testing hide the create recipe link
-      document.getElementById("createRecipe").style.display = "none";
-
+      // document.getElementById("userName").innerHTML = "";
       userExists = false;
     }
   });
