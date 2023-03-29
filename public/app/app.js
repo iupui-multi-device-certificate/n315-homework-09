@@ -1,7 +1,6 @@
-//TODO: user feedback - IP
+//TODO: user name in UI?
 //TODO: show/hide login & logout buttons as needed
 //TODO: pretty up user feedback w/ sweet alerts 2 per wk01 assessment https://sweetalert2.github.io/
-//TODO: rename functions to match front-end buttons rather than firebase since those are wrappers anyways
 //TODO: organize code more -- maybe authForm controller
 
 import { homeView } from "./views/homeView.js";
@@ -15,10 +14,6 @@ import {
 } from "./firebase/firebaseUser.js";
 
 //globals
-//really just need a way to track state
-//?why does it say userExists not read but userFullName is read?
-let userExists = false;
-let userFullName = "";
 const titleBase = "The Jungle Cook";
 
 //refactor to own file
@@ -47,6 +42,17 @@ const toggleMobileMenu = () => {
   $(".nav-menu").toggleClass("active");
 };
 
+const prevDefaultAllForms = () => {
+  //add prevent default on all forms so data does not show as query parameters in url
+  let forms = document.querySelectorAll("form");
+
+  forms.forEach((item) => {
+    item.addEventListener("submit", function (e) {
+      e.preventDefault();
+    });
+  });
+};
+
 function initListeners() {
   $(window).on("hashchange", changeRoute);
   changeRoute();
@@ -60,14 +66,7 @@ function initListeners() {
     toggleMobileMenu();
   });
 
-  //add prevent default on all forms so data does not show as query parameters in url
-  let forms = document.querySelectorAll("form");
-
-  forms.forEach((item) => {
-    item.addEventListener("submit", function (e) {
-      e.preventDefault();
-    });
-  });
+  prevDefaultAllForms();
 
   //this works
   //https://stackoverflow.com/questions/35406896/onclick-function-used-on-dynamic-content-not-working-properly
@@ -90,6 +89,8 @@ const handleLoginSubmit = (e) => {
     getFormData(currentForm);
 
   signIn(email, password);
+  //TODO: decide if the form only be cleared if successful?
+  //TODO: move this to onAuthStateChanged?
   clearFormData(currentForm);
 };
 
@@ -106,6 +107,8 @@ const handleSignUpSubmit = (e) => {
 
   const displayName = `${firstName} ${lastName}`;
   createAccount(email, password, displayName);
+  //TODO: decide if the form only be cleared if successful?
+  //TODO: move this to onAuthStateChanged?
   clearFormData(currentForm);
 };
 
