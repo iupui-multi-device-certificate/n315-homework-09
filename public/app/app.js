@@ -3,13 +3,19 @@
 //TODO: pretty up user feedback w/ sweet alerts 2 per wk01 assessment https://sweetalert2.github.io/
 //TODO: rename functions to match front-end buttons rather than firebase since those are wrappers anyways
 //TODO: organize code more -- maybe authForm controller
-//TODO: move firebase to its own module
 
 import { homeView } from "./views/homeView.js";
 import { loginView } from "./views/loginView.js";
+import {
+  initFirebaseAuth,
+  signIn,
+  signOut,
+  createAccount,
+  updateUserProfile,
+} from "./firebase/firebaseUser.js";
 
 //globals
-
+//really just need a way to track state
 //?why does it say userExists not read but userFullName is read?
 let userExists = false;
 let userFullName = "";
@@ -115,105 +121,10 @@ const clearFormData = (form) => {
   form.reset();
 };
 
-//firebase stuff
-function initFirebase() {
-  //event listener on window
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      // console.log("auth change logged in");
-      if (user.displayName) {
-        //TODO: show name in UI
-        userFullName = user.displayName;
-        console.log(`auth change: ${userFullName} is logged in`);
-      }
-      userExists = true;
-    } else {
-      console.log("auth change logged out");
-
-      userExists = false;
-    }
-  });
-}
-
-function signIn(email, password) {
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(() => {
-      console.log("signIn: logged in");
-      //maybe we should returning a success variable to use elsewhere??
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-
-      console.log("Error signing in: " + errorMessage);
-    });
-}
-
-function signOut() {
-  firebase
-    .auth()
-    .signOut()
-    .then(() => {
-      console.log("signed out");
-    })
-    .catch((error) => {
-      // An error happened.
-      console.log("error signing out");
-    });
-}
-
-function createAccount(email, password, displayName = "") {
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // Signed in
-      var user = userCredential.user;
-      // ...
-      console.log("account created & logged in");
-      updateUserProfile(displayName);
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log("logged in error ", errorMessage);
-    });
-}
-
-function updateUserProfile(displayName) {
-  const user = firebase.auth().currentUser;
-
-  user
-    .updateProfile({
-      displayName,
-    })
-    .then(() => {
-      // Update successful
-      // ...
-      userFullName = displayName;
-      //TODO: show name in UI
-      console.log("display name updated", userFullName);
-    })
-    .catch((error) => {
-      // An error occurred
-      // ...
-      var errorCode = error.code;
-      var errorMessage = error.message;
-
-      console.log("error updating user profile", errorMessage);
-    });
-}
-
-//TODO: remove this
-//add to window namespace per https://stackoverflow.com/questions/57942951/function-not-defined-javascript-onclick b/c using module
-//window.signIn = signIn;
-
 $(document).ready(function () {
   try {
     let app = firebase.app();
-    initFirebase();
+    initFirebaseAuth();
     initListeners();
   } catch (error) {
     console.log("error: ", error);
