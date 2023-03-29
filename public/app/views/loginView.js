@@ -1,21 +1,22 @@
 export const loginView = () => `
   <section class="content section-login">
-    <form class="login-form" onsubmit="event.preventDefault();">
+    <form id="login-form">
       <div class="form-title">Login:</div>
       <input
         type="email"
-        name="email"
-        id="email"
+        name="loginEmail"
+        id="loginEmail"
         placeholder="Email Address"
-        aria-label="email"
+        aria-label="loginEmail"
         class="form-element form-element--small"
       />
+
       <input
         type="password"
-        name="password"
-        id="password"
+        name="loginPassword"
+        id="loginPassword"
         placeholder="Password"
-        aria-label="password"
+        aria-label="loginPassword"
         class="form-element form-element--small"
       />
       <input
@@ -26,7 +27,7 @@ export const loginView = () => `
         id="loginBtn"
       />
     </form>
-    <form class="signup-form" onsubmit="event.preventDefault();">
+    <form id="signup-form">
       <div class="form-subtitle">don't have an account?</div>
       <div class="form-title">Sign up:</div>
       <input
@@ -47,26 +48,26 @@ export const loginView = () => `
       />
       <input
         type="email"
-        name="email"
-        id="email"
+        name="signupEmail"
+        id="signupEmail"
         placeholder="Email Address"
-        aria-label="email"
+        aria-label="signupEmail"
         class="form-element form-element--small"
       />
       <input
         type="password"
-        name="password"
-        id="password"
+        name="signupPassword"
+        id="signupPassword"
         placeholder="Password"
-        aria-label="password"
+        aria-label="signupPassword"
         class="form-element form-element--small"
       />
       <input
         type="submit"
         value="Sign Up"
         class="btn btn--wide btn--naplesYellow"
-        name="signup"
-        id="signup"
+        name="signupBtn"
+        id="signupBtn"
       />
     </form>
   </section>
