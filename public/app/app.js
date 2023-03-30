@@ -27,16 +27,24 @@ const routes = {
 
 const changeRoute = () => {
   let hashTag = window.location.hash;
+
+  //? maybe it would be better to map the hash in the routes as part of the route object rather than mess with it here
   let pageID = hashTag.replace("#", "");
 
   //set to home if empty string
   if (pageID == "") {
     pageID = "home";
   }
+
+  //so can set the current page underline when page loads
+  if (hashTag === "") {
+    hashTag = "#home";
+  }
+
   document.getElementById("app").innerHTML = routes[pageID];
 
   document.title = `${titleBase} | ${pageID.toUpperCase()}`;
-
+  console.log("app.js > changeRoute > ", hashTag);
   toggleCurrentPage(hashTag);
 };
 
