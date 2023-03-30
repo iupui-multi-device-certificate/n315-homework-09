@@ -1,7 +1,6 @@
 //TODO: user name in UI?
 //TODO: show/hide login & logout buttons as needed
 //TODO: pretty up user feedback w/ sweet alerts 2 per wk01 assessment https://sweetalert2.github.io/
-//TODO: organize code more -- maybe authForm controller
 
 import { homeView } from "./views/homeView.js";
 import { loginView } from "./views/loginView.js";
@@ -16,9 +15,11 @@ import {
 //globals
 const titleBase = "The Jungle Cook";
 
-//refactor to own file
-//router is a type of controller
-
+/* 
+**************************************
+  router stuff
+**************************************
+*/
 const routes = {
   home: homeView(),
   login: loginView(),
@@ -37,9 +38,49 @@ const changeRoute = () => {
   document.title = `${titleBase} | ${pageID.toUpperCase()}`;
 };
 
-const toggleMobileMenu = () => {
-  $(".hamburger").toggleClass("active");
-  $(".nav-menu").toggleClass("active");
+/* 
+**************************************
+  forms stuff
+  NOTE: not moving to separate module to avoid issues w/ not recognizing firebase functions 
+**************************************
+*/
+const handleLoginSubmit = (e) => {
+  e.preventDefault();
+
+  const currentForm = e.currentTarget.form;
+  const { loginEmail: email, loginPassword: password } =
+    getFormData(currentForm);
+
+  signIn(email, password);
+  clearFormData(currentForm);
+};
+
+const handleSignUpSubmit = (e) => {
+  e.preventDefault();
+  const currentForm = e.currentTarget.form;
+
+  const {
+    firstName,
+    lastName,
+    signupEmail: email,
+    signupPassword: password,
+  } = getFormData(currentForm);
+
+  const displayName = `${firstName} ${lastName}`;
+  createAccount(email, password, displayName);
+  clearFormData(currentForm);
+};
+
+const getFormData = (form) => {
+  const formData = new FormData(form);
+
+  const formDataObject = Object.fromEntries(formData);
+
+  return formDataObject;
+};
+
+const clearFormData = (form) => {
+  form.reset();
 };
 
 const prevDefaultAllForms = () => {
@@ -51,6 +92,16 @@ const prevDefaultAllForms = () => {
       e.preventDefault();
     });
   });
+};
+
+/* 
+**************************************
+  mobile nav helper stuff
+**************************************
+*/
+const toggleMobileMenu = () => {
+  $(".hamburger").toggleClass("active");
+  $(".nav-menu").toggleClass("active");
 };
 
 function initListeners() {
@@ -80,49 +131,6 @@ function initListeners() {
     signOut();
   });
 }
-
-const handleLoginSubmit = (e) => {
-  e.preventDefault();
-
-  const currentForm = e.currentTarget.form;
-  const { loginEmail: email, loginPassword: password } =
-    getFormData(currentForm);
-
-  signIn(email, password);
-  //TODO: decide if the form only be cleared if successful?
-  //TODO: move this to onAuthStateChanged?
-  clearFormData(currentForm);
-};
-
-const handleSignUpSubmit = (e) => {
-  e.preventDefault();
-  const currentForm = e.currentTarget.form;
-
-  const {
-    firstName,
-    lastName,
-    signupEmail: email,
-    signupPassword: password,
-  } = getFormData(currentForm);
-
-  const displayName = `${firstName} ${lastName}`;
-  createAccount(email, password, displayName);
-  //TODO: decide if the form only be cleared if successful?
-  //TODO: move this to onAuthStateChanged?
-  clearFormData(currentForm);
-};
-
-const getFormData = (form) => {
-  const formData = new FormData(form);
-
-  const formDataObject = Object.fromEntries(formData);
-
-  return formDataObject;
-};
-
-const clearFormData = (form) => {
-  form.reset();
-};
 
 $(document).ready(function () {
   try {
