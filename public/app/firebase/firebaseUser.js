@@ -1,12 +1,11 @@
-//because the is a subscriber but async, need to do stuff in this function
+import { showSignedIn, showSignedOut } from "../helpers.js";
 
 //useful example of onAuthStateChanged:
 //https://fireship.io/lessons/firebase-quickstart/
+//because the is a subscriber but async, need to do stuff in this function
 export const initFirebaseAuth = () => {
   //can this be returned???
   let status = { loggedIn: false, message: "", displayName: "" };
-
-  const userName = document.getElementById("userName");
 
   //event listener on window
   firebase.auth().onAuthStateChanged((user) => {
@@ -21,8 +20,9 @@ export const initFirebaseAuth = () => {
       };
 
       console.log("firebaseUser > ln 25> ", status);
+      showSignedIn(status.displayName);
 
-      userName.innerHTML = `Hello ${status.displayName}`;
+      // userName.innerHTML = `Hello ${status.displayName}`;
     } else {
       console.log("firebaseUser > auth change logged out");
 
@@ -31,8 +31,7 @@ export const initFirebaseAuth = () => {
         message: "Logout successful",
       };
       console.log("firebaseUser > ", status);
-
-      userName.innerHTML = "";
+      showSignedOut();
     }
   });
 };
