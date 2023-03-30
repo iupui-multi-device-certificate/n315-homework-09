@@ -10,7 +10,7 @@ import {
   updateUserProfile,
 } from "./firebase/firebaseUser.js";
 
-import { toggleMobileMenu } from "./helpers.js";
+import { toggleMobileMenu, toggleCurrentPage } from "./helpers.js";
 
 //globals
 const titleBase = "The Jungle Cook";
@@ -36,6 +36,8 @@ const changeRoute = () => {
   document.getElementById("app").innerHTML = routes[pageID];
 
   document.title = `${titleBase} | ${pageID.toUpperCase()}`;
+
+  toggleCurrentPage(hashTag);
 };
 
 /* 

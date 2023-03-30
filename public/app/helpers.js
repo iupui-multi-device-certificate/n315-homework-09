@@ -18,3 +18,22 @@ export const toggleMobileMenu = () => {
   $(".hamburger").toggleClass("active");
   $(".nav-menu").toggleClass("active");
 };
+
+export const toggleCurrentPage = (currentPage) => {
+  //https://codepen.io/Coding-in-Public/pen/MWroExJ
+  //except also need to remove from rest when change page
+  //get their hash not href (which is the whole link)
+  document.querySelectorAll(".nav-menu .nav-link").forEach((navLink) => {
+    //just get the anchor tags
+    if (navLink.tagName === "A") {
+      //use aria-current for accessibility reasons
+
+      //remove aria-current from everywhere first
+      navLink.removeAttribute("aria-current", "page");
+
+      if (navLink.hash === currentPage && navLink.hash != "#login") {
+        navLink.setAttribute("aria-current", "page");
+      }
+    }
+  });
+};

@@ -471,7 +471,7 @@ legend {
   background-color: #393939;
 }
 
-.current-page:after {
+.nav-link[aria-current=page]:after {
   content: "";
   display: block;
   width: 80%;

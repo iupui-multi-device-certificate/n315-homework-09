@@ -47,7 +47,8 @@
   background-color: $dark;
 }
 
-.current-page:after {
+// .current-page:after {
+  .nav-link[aria-current="page"]:after {
   content: "";
   display: block;
   width: 80%;
