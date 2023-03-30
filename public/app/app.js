@@ -1,4 +1,3 @@
-//TODO: user name in UI?
 //TODO: show/hide login & logout buttons as needed
 //TODO: pretty up user feedback w/ sweet alerts 2 per wk01 assessment https://sweetalert2.github.io/
 

@@ -1,7 +1,13 @@
 //because the is a subscriber but async, need to do stuff in this function
+
+//useful example of onAuthStateChanged:
+//https://fireship.io/lessons/firebase-quickstart/
 export const initFirebaseAuth = () => {
   //can this be returned???
   let status = { loggedIn: false, message: "", displayName: "" };
+
+  const userName = document.getElementById("userName");
+
   //event listener on window
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -15,6 +21,8 @@ export const initFirebaseAuth = () => {
       };
 
       console.log("firebaseUser > ln 25> ", status);
+
+      userName.innerHTML = `Hello ${status.displayName}`;
     } else {
       console.log("firebaseUser > auth change logged out");
 
@@ -23,6 +31,8 @@ export const initFirebaseAuth = () => {
         message: "Logout successful",
       };
       console.log("firebaseUser > ", status);
+
+      userName.innerHTML = "";
     }
   });
 };
