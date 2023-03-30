@@ -45,6 +45,25 @@ export const signIn = (email, password) => {
       var errorMessage = error.message;
 
       console.log("firebaseUser > signIn: Error signing in: " + errorMessage);
+
+      let message =
+        "Error logging in. Please contact your admin for assistance.";
+
+      if (errorCode === "auth/wrong-password") {
+        message = "Invalid password. Please try again";
+      }
+
+      //don't like this, it jiggles rather than smoothly fading in
+      Swal.fire({
+        toast: true,
+        position: "bottom",
+        title: "Invalid password",
+        icon: "error",
+        text: message,
+        showConfirmButton: false,
+        timer: 3000,
+        animation: false,
+      });
     });
 };
 
