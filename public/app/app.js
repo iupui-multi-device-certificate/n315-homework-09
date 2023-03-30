@@ -1,5 +1,3 @@
-//TODO: pretty up user feedback w/ sweet alerts 2 per wk01 assessment https://sweetalert2.github.io/
-
 import { homeView } from "./views/homeView.js";
 import { loginView } from "./views/loginView.js";
 import {

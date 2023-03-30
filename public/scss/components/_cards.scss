@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  // gap: 3.125rem;
+
   gap: 2.5rem;
 }
 
@@ -79,7 +79,6 @@
   }
 
   .card {
-    //use 45% to take into account gap b/n items
     flex: 1 1 30%;
     max-width: 524px;
   }
@@ -92,14 +91,10 @@
   }
 
   .card {
-    //use 45% to take into account gap b/n items
     flex: 1 0 30%;
     max-width: 524px;
   }
 
-  // .card-row {
-  //   display: flex;
-  // }
   .card-body {
     min-height: 263px;
     flex-basis: 224px;
@@ -113,21 +108,3 @@
     gap: 1rem;
   }
 }
-
-//TODO: hide buttons and show on hover on large screen if required
-// @media only screen and (max-width: $breakpoint-md) {
-//   .cards {
-//     .card {
-//       .image-holder {
-//         .btn-overlay {
-//           display: block;
-//         }
-
-//         .button-holder {
-//           display: flex;
-//           justify-content: space-between;
-//         }
-//       }
-//     }
-//   }
-// }
