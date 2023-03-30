@@ -450,8 +450,12 @@ legend {
   align-items: center;
   gap: 2rem;
 }
+.nav-menu .nav-item,
 .nav-menu .nav-item .nav-link {
   font-size: 1.563rem;
+}
+.nav-menu #userFullName {
+  font-style: italic;
 }
 
 .hamburger {

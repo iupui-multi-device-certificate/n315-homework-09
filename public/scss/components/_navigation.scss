@@ -23,8 +23,13 @@
   align-items: center;
   gap: 2rem;
 
+  .nav-item,
   .nav-item .nav-link {
     font-size: 1.563rem;
+  }
+
+  #userFullName {
+    font-style: italic;
   }
 }
 
