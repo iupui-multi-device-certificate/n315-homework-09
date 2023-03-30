@@ -74,6 +74,8 @@ export const createAccount = (email, password, displayName = "") => {
       // ...
       console.log("firebaseUser > createAccount: account created & logged in");
       updateUserProfile(displayName);
+
+      showSignedIn(displayName);
     })
     .catch((error) => {
       var errorCode = error.code;
