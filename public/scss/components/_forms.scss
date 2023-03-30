@@ -86,18 +86,22 @@ legend {
 
 //Lato black
 //font-weight 900 per https://fonts.google.com/specimen/Lato
-.login-form,
-.signup-form {
+#login-form,
+#signup-form {
   .form-title {
     font-family: "Lato";
     font-weight: $dark-weight;
     font-size: 1.875rem;
+    letter-spacing: 3px;
+    line-height: 40px;
   }
 
   .form-subtitle {
     font-family: "Lato";
     font-style: italic;
     font-size: 0.75rem;
+    letter-spacing: 1.2px;
+    line-height: 15px;
   }
 }
 .form-title {

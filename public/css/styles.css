@@ -387,17 +387,21 @@ legend {
   margin-bottom: 2rem;
 }
 
-.login-form .form-title,
-.signup-form .form-title {
+#login-form .form-title,
+#signup-form .form-title {
   font-family: "Lato";
   font-weight: 900;
   font-size: 1.875rem;
+  letter-spacing: 3px;
+  line-height: 40px;
 }
-.login-form .form-subtitle,
-.signup-form .form-subtitle {
+#login-form .form-subtitle,
+#signup-form .form-subtitle {
   font-family: "Lato";
   font-style: italic;
   font-size: 0.75rem;
+  letter-spacing: 1.2px;
+  line-height: 15px;
 }
 
 .form-title {
