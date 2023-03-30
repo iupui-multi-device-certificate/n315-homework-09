@@ -2,9 +2,8 @@ import { showSignedIn, showSignedOut } from "../helpers.js";
 
 //useful example of onAuthStateChanged:
 //https://fireship.io/lessons/firebase-quickstart/
-//because the is a subscriber but async, need to do stuff in this function
+//because the is a subscriber but async, need to do stuff in this function not easily returnable
 export const initFirebaseAuth = () => {
-  //can this be returned???
   let status = { loggedIn: false, message: "", displayName: "" };
 
   //event listener on window
@@ -21,8 +20,6 @@ export const initFirebaseAuth = () => {
 
       console.log("firebaseUser > ln 25> ", status);
       showSignedIn(status.displayName);
-
-      // userName.innerHTML = `Hello ${status.displayName}`;
     } else {
       console.log("firebaseUser > auth change logged out");
 
@@ -71,7 +68,7 @@ export const createAccount = (email, password, displayName = "") => {
     .then((userCredential) => {
       // Signed in
       var user = userCredential.user;
-      // ...
+
       console.log("firebaseUser > createAccount: account created & logged in");
       updateUserProfile(displayName);
 
@@ -100,7 +97,6 @@ export const updateUserProfile = (displayName) => {
     })
     .catch((error) => {
       // An error occurred
-      // ...
       var errorCode = error.code;
       var errorMessage = error.message;
 

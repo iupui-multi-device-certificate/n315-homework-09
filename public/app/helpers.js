@@ -13,3 +13,8 @@ export const showSignedOut = () => {
   document.getElementById("logoutNav").hidden = true;
   document.getElementById("userFullName").innerHTML = "";
 };
+
+export const toggleMobileMenu = () => {
+  $(".hamburger").toggleClass("active");
+  $(".nav-menu").toggleClass("active");
+};

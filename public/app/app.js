@@ -10,6 +10,8 @@ import {
   updateUserProfile,
 } from "./firebase/firebaseUser.js";
 
+import { toggleMobileMenu } from "./helpers.js";
+
 //globals
 const titleBase = "The Jungle Cook";
 
@@ -39,7 +41,13 @@ const changeRoute = () => {
 /* 
 **************************************
   forms stuff
-  NOTE: not moving to separate module to avoid issues w/ not recognizing firebase functions 
+  NOTE: not moving to separate module to avoid issues w/ not recognizing firebase functions
+  in future, may be better to use an MVC component hybrid:
+  components
+    auth
+      model
+      view
+      controller 
 **************************************
 */
 const handleLoginSubmit = (e) => {
@@ -90,16 +98,6 @@ const prevDefaultAllForms = () => {
       e.preventDefault();
     });
   });
-};
-
-/* 
-**************************************
-  mobile nav helper stuff
-**************************************
-*/
-const toggleMobileMenu = () => {
-  $(".hamburger").toggleClass("active");
-  $(".nav-menu").toggleClass("active");
 };
 
 function initListeners() {
